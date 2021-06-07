@@ -16,32 +16,62 @@ class Crawler():
         for element in seedURLs:
             PriorityQueue.append(element)
         pagesCrawled = 1
+        index = 0
         while (pagesToCrawl > 0):
             time.sleep(5)
             print(f'Pages Crawled: {pagesCrawled}')
             url = PriorityQueue.pop(0)
             print(f'Current URL: {url}')
             TraveledLinks.append(url)
+            robot_txt = url + "robots.txt"
+            allowedToCrawl = False
             try:
-                page_to_soup = urllib.request.urlopen(url)
+                robot_page = urllib.request.urlopen(robot_txt)
+                robot_soup = BeautifulSoup(robot_page, "html.parser")
+                string = "User-agent: *"
+                for line in robot_soup:
+                    if string in line:
+                        allowedToCrawl = True
+                        print("Allowed to crawl this page...")
             except:
-                print(f'Bad URL do not crawl.')
-                pagesCrawled += 1
-                continue
-           
-            soup = BeautifulSoup(page_to_soup, "html.parser")
-            html_page = requests.get(url)
-            with open(f'html_files/{filename}', 'wb') as f:
-                f.write(html_page.content)
-            for link in soup.findAll('a'):
-                currentLink = urljoin(url, link.get('href')) 
-                if currentLink not in TraveledLinks and currentLink not in PriorityQueue:
-                    if 'basketball' in currentLink:
-                        PriorityQueue.insert(0, currentLink)
-                    else:
-                        PriorityQueue.append(currentLink)
+                print(f'No Robots.txt for this URL.')
+                allowedToCrawl = True
+    
+            if allowedToCrawl: 
+                try:
+                    html_page = urllib.request.urlopen(url)
+                except:
+                    print(f'Bad URL do not crawl.')
+                    pagesCrawled += 1
+                    continue
+                soup = BeautifulSoup(html_page, "html.parser")
+                html_page_body = str(soup.body.text).strip('/n').replace('\n', ' ').replace('(', "").replace(')', "").replace("`", "").replace("'", "").replace("u'", "'")
+                html_page_body_encode = html_page_body.encode("ascii", "ignore")
+                html_page_body_decode = html_page_body_encode.decode()
+                dict = {
+                    "index": index,
+                    "Crawled_Page": pagesCrawled,
+                    "url": url,
+                    "html": html_page_body_decode
+                }
+                with open('data.json', 'a') as f:
+                    json.dump(dict, f)
+                    f.write('\n')
+                    print("Updated JSON")
+                    index += 1
+                for link in soup.findAll('a'):
+                    currentLink = urljoin(url, link.get('href')) 
+                    if currentLink not in TraveledLinks and currentLink not in PriorityQueue:
+                        if 'basketball' in currentLink:
+                            PriorityQueue.insert(0, currentLink)
+                        else:
+                            PriorityQueue.append(currentLink)
+                pagesToCrawl -= 1
+            else:
+                print("Couldn't crawl page")
             pagesCrawled += 1
-            pagesToCrawl -= 1
+            allowedToCrawl = False
+            
 
         #  try:
         #         page_to_soup = urllib.request.urlopen(element)
