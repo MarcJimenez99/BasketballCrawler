@@ -49,9 +49,11 @@ class Crawler():
                 html_page_body_encode = html_page_body.encode("ascii", "ignore")
                 html_page_body_decode = html_page_body_encode.decode()
                 dict = {
-                    "index":  {}
+                    "index":  {"_id": index}
                 }
                 htmldict = {
+                    "url": url,
+                    "Crawled_Page": pagesCrawled,
                     "html": html_page_body_decode
                 }
                 with open('data.json', 'a') as f:
@@ -123,4 +125,6 @@ if __name__ == "__main__":
         seedURLs = f.readlines()
     seedURLs = [x.strip() for x in seedURLs] 
     print(seedURLs)
+    # clear file's contents when restarting program
+    open('data.json', 'w').close()
     BasketballCrawler.parse(seedURLs, pagesToCrawl)
