@@ -49,13 +49,15 @@ class Crawler():
                 html_page_body_encode = html_page_body.encode("ascii", "ignore")
                 html_page_body_decode = html_page_body_encode.decode()
                 dict = {
-                    "index": index,
-                    "Crawled_Page": pagesCrawled,
-                    "url": url,
+                    "index":  {}
+                }
+                htmldict = {
                     "html": html_page_body_decode
                 }
                 with open('data.json', 'a') as f:
                     json.dump(dict, f)
+                    f.write('\n')
+                    json.dump(htmldict, f)
                     f.write('\n')
                     print("Updated JSON")
                     index += 1
