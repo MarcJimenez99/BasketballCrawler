@@ -5,11 +5,12 @@ import urllib.request
 import requests
 import time
 import json
+import sys
 
 class Crawler():
 
 
-    def parse(self, seedURLs, pagesToCrawl):
+    def parse(self, seedURLs, pagesToCrawl, outputFile):
         PriorityQueue = []
         TraveledLinks = []
 
@@ -56,7 +57,7 @@ class Crawler():
                     "Crawled_Page": pagesCrawled,
                     "html": html_page_body_decode
                 }
-                with open('data.json', 'a') as f:
+                with open(outputFile, 'a') as f:
                     json.dump(dict, f)
                     f.write('\n')
                     json.dump(htmldict, f)
@@ -120,11 +121,13 @@ class Crawler():
 
 if __name__ == "__main__":
     BasketballCrawler = Crawler()
-    pagesToCrawl = int(input("How many pages would you like to crawl?: "))
-    with open('seedURLs.txt') as f:
+    fileInput = sys.argv[1]
+    pagesToCrawl = int(sys.argv[2])
+    outputFile = sys.argv[3]
+    with open(fileInput) as f:
         seedURLs = f.readlines()
     seedURLs = [x.strip() for x in seedURLs] 
     print(seedURLs)
     # clear file's contents when restarting program
-    open('data.json', 'w').close()
-    BasketballCrawler.parse(seedURLs, pagesToCrawl)
+    open(outputFile, 'w').close()
+    BasketballCrawler.parse(seedURLs, pagesToCrawl, outputFile)
