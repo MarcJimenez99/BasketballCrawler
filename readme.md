@@ -1,5 +1,8 @@
 # CS172 Final Project
-## Collaboration Details: Description of contribution of each team member.
+## Collaboration Details: 
+### Marc Jimenez: Crawler
+### Jonathan Picazo:
+### Trevor Gorman: 
 
 ## Part 1 - Crawler
 ### Overview of system, including (but not limited to)
@@ -18,6 +21,7 @@ To run the crawler run the following command:
 ```
 python3 crawler.py <seedURLs.txt> <number of pages to crawl> <outputFile>**
 ```
+
 ## Part 2 - Indexer
 Instructions on how to deploy the system. Ideally, you should include an indexer.bat (Windows) or indexer.sh (Unix/Linux) executable file that takes as input all necessary parameters .  Example: [user@server] ./indexer.sh < output − dir >
 ## Part 3 - Extension
