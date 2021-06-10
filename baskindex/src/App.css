@@ -1,0 +1,26 @@
+
+td {
+  border: 1px solid #000;
+}
+
+tr td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid white;
+}
+
+input {
+  width: 65%;
+}
+body {
+  text-align: center;
+  background-color: #273746; 
+  color: #fff;
+}
