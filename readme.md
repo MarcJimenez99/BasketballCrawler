@@ -4,7 +4,7 @@
 ## Part 1 - Crawler
 ### Overview of system, including (but not limited to)
 #### (a) Architecture
-![Crawler Architecture](/BasketballCrawler/blob/main/CrawlerArchitecture.jpg)
+![Crawler Architecture](CrawlerArchitecture.jpg)
 #### (b) The Crawling or data collection strategy (do you handle duplicate URLs, is your crawler parallel, etc.)
 #### (c) Data Structures employed
 ### Limitations (if any) of the system.
