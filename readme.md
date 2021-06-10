@@ -19,7 +19,7 @@ UNSURE
 ### (e) Instruction on how to deploy the crawler. 
 To run the crawler run the following command:
 ```
-python3 crawler.py <seedURLs.txt> <number of pages to crawl> <outputFile>
+python3 crawler.py <seedURLs.txt> <number of pages to crawl> <data.json>
 ```
 
 ## Part 2 - Indexer
