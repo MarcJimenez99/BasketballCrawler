@@ -14,7 +14,7 @@ def performQuery():
     y = json.loads(x)
     searchtarg = str((y["query"]["srch"]))
     # gets query results from elasticsearch
-    indexName = "bindex"
+    indexName = "bigindex"
     elastic_pass ="erYIt3NyBuJ44T6GczZP70c5"
     endpoint = "i-o-optimized-deployment-4ac6a9.es.us-west1.gcp.cloud.es.io:9243"
     connectionString = "https://elastic:" + elastic_pass + "@" + endpoint
