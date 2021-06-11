@@ -53,3 +53,4 @@ esConn.search(index=indexName, body={"query": {"match_phrase": {"html": searchta
 ![image](./images/screensht1.PNG)
 #### This is our web application after query "Danny Ainge" is entered.
 ![image](./images/screensht2.PNG)
+#### The index used for our website is named bigindex, and is roughly 12MB of data. Our crawler seeds from https://www.basketball-reference.com/players
