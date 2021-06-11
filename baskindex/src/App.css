@@ -1,26 +1,57 @@
 
-td {
+/* td {
   border: 1px solid #000;
-}
+} */
 
 tr td:last-child {
   width: 1%;
   white-space: nowrap;
 }
+
+tr th {
+  color: #C0C0C0;
+}
 table {
-  width: 100%;
-  border-collapse: collapse;
+  width:70%; 
+  margin-left:15%; 
+  margin-right:15%;
+  /* border-collapse: collapse; */
+  border-spacing: 15px;
 }
 
-table, th, td {
-  border: 1px solid white;
+button {
+  padding: 10.5px 20px
 }
-
 input {
   width: 65%;
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-size:90%;
 }
 body {
   text-align: center;
   background-color: #273746; 
   color: #fff;
+}
+
+
+a:link {
+  color: #0099ff;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #9900ff;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
 }

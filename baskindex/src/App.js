@@ -33,9 +33,10 @@ printTable() {
   if (this.state.dataList.length > 1) {
     for (let k in this.state.dataList) {
       array.push(<tr>
-        <th><b>{this.state.dataList[k][0]}</b></th>
-        <th><a href = {this.state.dataList[k][1]}>{this.state.dataList[k][1]}</a></th>
-        <th>{this.state.dataList[k][2]}</th>
+        <td><b>{this.state.dataList[k][0]}</b></td>
+        <td>{this.state.dataList[k][1]}</td>
+        <td><a href = {this.state.dataList[k][2]} target="_blank">{this.state.dataList[k][2]}</a></td>
+        <td>{this.state.dataList[k][3]}</td>
       </tr>
         )
     }
@@ -50,17 +51,21 @@ render() {
     <div className="App">
       <h1>Enter search query</h1>
       <form onSubmit = {this.searchfunc}>
-        <div><input type = "text" placeholder= "Enter query here" name = "srch" onChange = {this.handleChange}/> </div>
-        <button type = "submit"> Submit </button>
+        <div><input type = "text" placeholder= "Enter query here" name = "srch" onChange = {this.handleChange}/> 
+          <button type = "submit"> Submit </button>
+        </div>
       </form>
+      <div>
           <table>
             <tr>
               <th>Score</th>
+              <th>ID</th>
               <th>URL</th>
-              <th>Crawled Page #</th>
+              <th>Crawled Page</th>
             </tr>
             {this.printTable()}
           </table>
+        </div>
     </div>
   );
 }

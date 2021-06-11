@@ -30,6 +30,7 @@ def performQuery():
                 temp = []
                 k = scores['_source']
                 temp.append(scores['_score'])
+                temp.append(scores['_id'])
                 for key, value in k.items():
                     if key != 'html':
                         temp.append(value)
