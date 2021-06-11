@@ -1,8 +1,8 @@
 # CS172 Final Project
 ## Collaboration Details: 
 ### Marc Jimenez: Crawler
-### Jonathan Picazo:
-### Trevor Gorman: 
+### Trevor Gorman: Indexer
+### Jonathan Picazo: Extension
 
 ## Part 1 - Crawler
 ### Overview of system, including (but not limited to)
